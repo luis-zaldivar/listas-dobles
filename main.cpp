@@ -11,10 +11,11 @@ struct Nodo{
 };
 void agregar( int);
 void mostrar();
+void mostar_atras();
 struct Nodo *lista=NULL;
 
 int main(int argc, char** argv) {
-	int opcion, add;
+	int opcion, add,n;
 	while(opcion!=3){
 	
 	cout<<"\t..::::MENU:::..."<<endl;
@@ -24,16 +25,23 @@ int main(int argc, char** argv) {
 	cin>>opcion;
 	switch (opcion){
         case 1:
+        	cout<<"inserte el numero de datos deseados: ";
+        	cin>>n;
+        	for (int i=1;i<=n;i++){
+			
         	cout<<"Digite datos"<<endl;
         	cin>>add;
         	cout<<endl;
         	agregar(add);
-        	
+        }
 			break;
         case 2:
             cout<<"Mostrar los datos ingresados ";
             cout<<endl;
             mostrar();
+            cout<<endl;
+            mostar_atras();
+            cout<<endl;
             break;
         case 3:
         	cout<<"Salir";
@@ -66,8 +74,21 @@ void agregar(int add)
 void mostrar(){
 	Nodo *aux=lista;
 	while(aux!=NULL){
-		cout<<aux->valor<<"  \n";
+		cout<<aux->valor<<" -> ";
 		aux=aux->siguiente;
 	}
 	cout<<endl;
 }
+void mostar_atras()
+{
+		Nodo *aux=lista;
+	while(aux->siguiente!=NULL){
+		aux=aux->siguiente;	
+	}
+	while(aux!=NULL){
+		cout<<aux->valor<<" -> ";
+		aux=aux->anterior;	
+	}
+	cout<<endl;
+}
+
